@@ -67,16 +67,17 @@ function playSound(e) {
   key.classList.add('playing');
 }
 
-  function removeTransition(e) {
-    //skip if property is not transform
-    if(e.propertyName !== 'transform') return;
-    this.classList.remove('playing');
-  }
-  // Select all the keys
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+function removeTransition(e) {
+  //skip if property is not transform
+  if(e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+}
+// Select all the keys
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
-  window.addEventListener('keydown', playSound);
+// listen to event happening in the browser
+window.addEventListener('keydown', playSound);
 
 </script>
 
