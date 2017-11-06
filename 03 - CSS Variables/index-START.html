@@ -71,6 +71,8 @@
   function handleUpdate (){
     //dataset
     const suffix = this.dataset.sizing || '';
+    // setProperty method selects the CSS variable that we created
+    // then update the value that we pass in
     document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
   };
 
