@@ -26,6 +26,16 @@
       --spacing: 10px;
       --blur: 10px;
     }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .h1 {
+      color: var(--base);
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -55,6 +65,17 @@
   // 04 create a function to handle udpdate
   // 05 create a evenlisteners, using change and mousemove to get updates
   // 06 when updating handleUpdate, use of dataset
+
+  const inputs = document.querySelectorAll('.controls input')
+
+  function handleUpdate (){
+    //dataset
+    const suffix = this.dataset.sizing || '';
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+  };
+
+  inputs.forEach(input => input.addEventListener('change', handleUpdate))
+  inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
 
   </script>
 
