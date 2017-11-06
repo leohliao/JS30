@@ -78,11 +78,10 @@
 
     //////////////////////////////////////////////////////////////////////////
     // 5. Sort the inventors by years lived
-
     const sortedByYearsLived = inventors.sort((first, second)=>{
       const ageFirst = first.passed - first.year
       const ageSecond = second.passed - second.year
-      return (ageFirst > ageSecond) ? 1 : -1;
+      return (ageFirst > ageSecond) ? -1 : 1;
     })
     console.table(sortedByYearsLived);
 
@@ -90,16 +89,40 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    // //01 select a category where it contains all the names
+    // const category = document.querySelector('.mw-category');
+    // //02 select the links of the category and transfer them into array
+    // const links = Array.from(category.querySelectorAll('a'));
+    // //03 map it so that it only has street name, then filter the names that include "de"
+    // const de = links
+    //               .map(link => link.textContent)
+    //               .filter(streetName => streetName.includes('de'));
 
     //////////////////////////////////////////////////////////////////////////
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const sortedByLastName = people.sort((first, second) => {
+      const [firstLastName, firstFirstName] = first.split(", ")
+      const [secondLastName, secondFirstName] = second.split(", ")
+      return firstLastName > secondLastName ? 1 : -1;
+
+    });
+    console.table(sortedByLastName);
 
     //////////////////////////////////////////////////////////////////////////
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const instances = data.reduce((obj, item) => {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+        obj[item]++;
+        return obj;
+    }, {});
+
+    console.log(instances);
   </script>
 </body>
 </html>
