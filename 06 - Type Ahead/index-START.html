@@ -17,6 +17,56 @@
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+// Step 1: fetch the data
+const cities = [];
+fetch(endpoint) // when you fetch from endpoint, the promise comes back as a blob object
+  .then(blob => blob.json()) // turn the blob object into json files
+  .then(data => cities.push(...data)); // turn these json files into an array
+
+// Step 2: actually find the matches
+function findMatches(wordToMatch, cities){
+  return cities.filter(place => {
+    // here we need to figure out if the city or state matches with searched
+    const regex = new RegExp(wordToMatch, 'gi'); // g stands for global, i is insensitive
+    // if we just use the wordToMatch directly, it will only return things that are exactly matched,
+    // therefore we need to use regular expressions here
+    return place.city.match(regex) || place.state.match(regex);
+  });
+}
+
+function numberWithCommas(x){
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+// Step 3: display those matches
+function displayMatches(){
+  const matchArray = findMatches(this.value, cities)
+  const html = matchArray.map(place => {
+    // for doing highlights
+    const regex = new RegExp(this.value, 'gi');
+    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+    // return the array of html
+    return `
+      <li>
+        <span class="name">${cityName}, ${stateName}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
+      </li>
+    `;
+  }).join('');
+  suggestions.innerHTML = html;
+}
+
+// Step 4: get query from the document
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+// Step 5: add event listeners
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+
+
+
 </script>
   </body>
 </html>
