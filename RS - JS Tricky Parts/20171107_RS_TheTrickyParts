@@ -1,0 +1,13 @@
+// 01 create a counter that start at 0 
+// increment the counter by 1 
+
+let i = 0;
+function increment (){
+  i ++; 
+  console.log(i)
+}
+setInterval(increment, 1000)
+
+
+// ++counter VS counter ++ 
+//
