@@ -24,7 +24,8 @@
     .panels {
       min-height:100vh;
       overflow: hidden;
-      display: flex; /* Step 01 */
+      /* Step 01 */
+      display: flex;
     }
 
     .panel {
@@ -138,7 +139,7 @@
   function toggleActive(e){
     if (e.propertyName.includes('flex')){
       this.classList.toggle('open-active');
-    }; 
+    };
   }
 
   panels.forEach(panel => panel.addEventListener('click', toggleOpen));
