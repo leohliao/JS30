@@ -1,13 +1,64 @@
 // 01 create a counter that start at 0 
 // increment the counter by 1 
 
-let i = 0;
-function increment (){
-  i ++; 
-  console.log(i)
-}
-setInterval(increment, 1000)
-
+// let i = 0;
+// function increment (){
+//   i ++; 
+//   console.log(i)
+// }
+// setInterval(increment, 1000)
 
 // ++counter VS counter ++ 
-//
+// closure - when a variable is defined in the outer function that are used in the inner function long after the outer function has been return, (variable still remember in the memory)
+// memory leaks - using more variable 
+function outer(){
+  var count = 0; 
+  var instructor = "Elie";
+  return function inner(){
+    debugger
+    return count // this is an example of closure cause you are using variable from outer function
+  }
+}
+
+// better example 
+function counter(){
+  var count = 0;
+  return function inner(){
+    return ++count
+
+  }
+}
+var counter1 = counter(); 
+counter1();
+///ReactJS - export default connect(mapStateToProps, mapDispatchToProps)(Todo) // good example of closure
+///NodeJS - var express = require("express") 
+//          var app = express()
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//02 Array Method 
+// return a new array with all the values doubled 
+
+let arr = [1, 2, 3, 4];
+const doubled = arr.map(el => {
+  return el * 2;
+});
+console.log(doubled);
+console.log(arr)
+
+// a different way 
+// using map will return a new array
+function doubleWithLoop(arr){
+  var newArr = [];
+  for(var i = 0; i < arr.length; i ++) {
+    newArr.push(arr[i]*2);
+  };
+  return newArr
+};
+
+function doubleWithMap(arr){
+    return arr.map(function(val){
+      return val * 2
+    })
+  };
+// declaration - only result --> use map 
+// imperative - step by step, procedural --> using loop approach
