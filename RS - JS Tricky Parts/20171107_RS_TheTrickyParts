@@ -140,8 +140,72 @@ function sayHi(){
 sayHi.call(instructor); // "hello ellie";
 sayHi.call(instructor2); // "hello Matt";
 
+// CALL AND BIND
+sayHi.call(instructor, 1, 2, 3) // when you pass argument
+sayHi.apply(instructor, [1, 2, 3]) // when you pass an array
+
+Math.max([1,2,3,10]) // Nan 
+Math.max.apply(this, [1, 2, 3, 10]) // 10
+Math.max(...[1,2,3, 10]) // spread operator // 10
+//// bind - implemented through closure
+var instructor = {
+  firstName: "Elie"
+}
+function doMath(a, b, c) {
+  return `${this.firstName} adds ${a +b +c}` 
+}
+var invokeLater = doMath.bind(instructor, 2) 
+invokeLater(10, 20) /// "Elie adds 32"
+///currying - calls the function over and over again until all the arguments are passed in
 
 /// global object - when the keyword is declared in an child object, its going to refer to the parent object
 /// implicit 
 /// explicit 
 /// new 
+
+var obj = {
+  firstName: "Elie",
+  sayHi: function(){
+    setTimeout(function(){
+      console.log(`Hello ${this.firstName}`)
+    }, 1000)
+  }
+}
+
+obj.sayHi(); // Hello undefined 
+
+/// ES5 Way
+var obj = {
+  firstName: "Elie",
+  sayHi: function () {
+    setTimeout(() => {
+      console.log(`Hello ${this.firstName}`)
+    }, 1000)
+  }
+}
+
+obj.sayHi(); // Hello Elie
+
+/// Using bind
+var obj = {
+  firstName: "Elie",
+  sayHi: function () {
+    setTimeout(function() {
+      console.log(`Hello ${this.firstName}`)
+    }.bind(obj), 1000)
+  }
+}
+
+obj.sayHi(); // Hello Elie
+
+// Using bind and this
+var obj = {
+  firstName: "Elie",
+  sayHi: function () {
+    setTimeout(function () {
+      console.log(`Hello ${this.firstName}`)
+    }.bind(this), 1000)
+  }
+}
+
+obj.sayHi(); // Hello Elie
