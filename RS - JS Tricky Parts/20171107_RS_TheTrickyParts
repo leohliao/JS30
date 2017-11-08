@@ -60,5 +60,88 @@ function doubleWithMap(arr){
       return val * 2
     })
   };
+
 // declaration - only result --> use map 
 // imperative - step by step, procedural --> using loop approach
+
+// 03 reduce 
+// you can turn the variable into different kind of data structure 
+//// example 1
+[1, 2, 3, 4].reduce(function(accumulator, nextValue) {
+  return accumulator += nextValue;
+}, 0);
+/// example 2
+[1, 2, 3, 4].reduce(function (accumulator, nextValue) {
+  if (nextValue % 2 === 0) {
+    accumulator.push(nextValue);
+  };
+  return accumulator
+}, []);
+//// example 3
+[1, 2, 3, 4, 3, 2, 0].reduce(function (accumulator, nextValue) {
+  if (nextValue in accumulator) {
+    accumulator[nextValue]++;
+  }else {
+    accumulator[nextValue] = 1;
+  };
+  return accumulator
+}, []);
+
+/// 04 THIS 
+// refers to global object
+/// when you have an invoked function, you will have "this" and "arguments"
+///example 1
+function awesome(){
+  return this 
+} /// you have no idea what it refers until you see the action invoke
+awesome() // window 
+new awesome() // object
+awesome.call([]) // []
+awesome.call({}); // {}
+
+/////example 2
+var obj = {
+  firstName: "Elie",
+  sayHi: function(){
+    return `Hello ${this.firstName}`
+  }
+}
+
+//// example 3 - explicit
+var instructor = {
+  firstName: "Elie",
+  sayHi: function () {
+    return `Hello ${this.firstName}`
+  }
+}
+
+var instructor2 = {
+  firstName: "Matt";
+}
+
+instructor.sayHi() // currently this is referring to instructor
+instructor.sayHi().call(instructor2) // currently this is referring to instructor2 
+
+/// better version
+var instructor = {
+  firstName: "Elie",
+  lastName: "Mike"
+}
+
+var instructor2 = {
+  firstName: "Matt";
+  lastName: "Oral"
+}
+
+function sayHi(){
+    return `Hello ${this.firstName}`
+}
+
+sayHi.call(instructor); // "hello ellie";
+sayHi.call(instructor2); // "hello Matt";
+
+
+/// global object - when the keyword is declared in an child object, its going to refer to the parent object
+/// implicit 
+/// explicit 
+/// new 
