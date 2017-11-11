@@ -26,6 +26,7 @@
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
+    // This is similar to the any method in Ruby!
     const nineteenSome = people.some(person =>
       ((new Date().getFullYear()) - person.year >= 19)
     );
