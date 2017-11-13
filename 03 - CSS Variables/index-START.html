@@ -21,12 +21,14 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    /* Step 1 - start with defining variables for CSS */
     :root {
       --base: #ffc600;
       --spacing: 10px;
       --blur: 10px;
     }
 
+    /* Step 2 - apply these variables to CSS */
     img {
       padding: var(--spacing);
       background: var(--base);
@@ -59,23 +61,21 @@
   </style>
 
   <script>
-  // 01 start with defining variables for CSS
-  // 02 write javascript to update the css
+  
   // 03 select all the inputs using querySelectors, what you have retunr is NodeList, though it looks like array
-  // 04 create a function to handle udpdate
-  // 05 create a evenlisteners, using change and mousemove to get updates
-  // 06 when updating handleUpdate, use of dataset
-
   const inputs = document.querySelectorAll('.controls input')
 
+  // 04 create a function to handle udpdate
   function handleUpdate (){
     //dataset
+    // 06 when updating handleUpdate, use of dataset
     const suffix = this.dataset.sizing || '';
     // setProperty method selects the CSS variable that we created
     // then update the value that we pass in
     document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
   };
 
+  // 05 create a evenlisteners, using change and mousemove to get updates
   inputs.forEach(input => input.addEventListener('change', handleUpdate))
   inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
 
