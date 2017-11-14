@@ -99,6 +99,46 @@
   </div>
 
 <script>
+/* Step 01 - Select all the boxes */
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+/* Step 03 - Create a function for the event listener */
+  let lastChecked;
+  function handleCheck(e){
+    // console.log(e)
+    /* Step 05 - inside the function, 
+    check if the shift key is down,
+    check if client is checking it */
+    let inBetween = false;
+    if (e.shiftKey && this.checked) {
+      /* Step 06 - Loop every single check box, 
+          test whether the checkbox lies inbtw two, 
+          negate the value of inBtw. 
+          create a condition and test the inBetween value, 
+          if its true then check the box. */
+      /* Step 07 - Define inBtw variable with default value of false */
+      checkboxes.forEach(checkbox => {
+        console.log(checkbox);
+        if ( checkbox === this || checkbox === lastChecked ) {
+          inBetween = !inBetween;
+          console.log('starting to check them inbetween');
+        } 
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      })
+    }
+    
+    /* Step 04 - Because we need to track the last child, create a variable to hold these information - LOGIC - last child should be be assigned inside the function */
+    lastChecked = this; 
+  }
+
+
+/* Step 02 - Loop each box, add event listener to the box, use 'click' */
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('click', handleCheck)
+  })
+
 </script>
 </body>
 </html>
