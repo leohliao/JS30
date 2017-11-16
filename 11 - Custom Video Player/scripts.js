@@ -53,7 +53,6 @@ video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 video.addEventListener('timeupdate', handleProgress);
-fullScreen.addEventListener('click', toggleFullScreen);
 
 toggle.addEventListener('click', togglePlay);
 skipButtons.forEach(button => button.addEventListener('click', skip));
@@ -67,6 +66,7 @@ progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 progress.addEventListener('mousedown', () => mousedown = true );
 progress.addEventListener('mouseup', () => mousedown = false );
 
+fullScreen.addEventListener('click', toggleFullScreen);
 
 
 
