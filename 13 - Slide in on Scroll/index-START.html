@@ -57,6 +57,30 @@
         if (callNow) func.apply(context, args);
       };
     }
+    /* Step 01 - Select the element for listening */
+    const sliderImages = document.querySelectorAll('.slide-in')
+    /* Step 02 - createa a function call checkSlide */
+    function checkSlide(e){
+      /* Step 04 - figure out half way through the image -use window.scrollY to figure out where the scroll is == window.scrollY + window.innerHeight  - slideImage.height/2 */
+      sliderImages.forEach(sliderImage => {
+        //half way through the image 
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+        /* Step 05 - figure out the bottom of the image = image.offsetTop + sliderImage.height */
+        // bottom of the image 
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const isHalfShown = slideInAt > sliderImage.offsetTop 
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        /* Step 06 - create if statement */
+        if (isHalfShown && isNotScrolledPast) {
+          sliderImage.classList.add('active');
+        } else {
+          sliderImage.classList.remove('active');
+        }
+      });
+    }// end function checkSlide
+    /* Step 03 - Add event listener, wrap the function with debounce function - when you have a scroll, make sure you include a debounce function */
+    window.addEventListener('scroll', debounce(checkSlide));
+
 
   </script>
 
