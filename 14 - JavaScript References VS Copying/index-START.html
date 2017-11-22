@@ -25,11 +25,13 @@
 
     // and we want to make a copy of it.
     const team = players;
-    console.log(players, team);
+    console.log(players, team); // ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // You might think we can just do something like this:
     team[3] = 'Lux'; 
 
+    console.log(team); //['Wes', 'Sarah', 'Ryan', 'Lux'];
+    console.log(players); // ['Wes', 'Sarah', 'Ryan', 'Lux'];
     // however what happens when we update that array?
 
     // now here is the problem!
@@ -66,7 +68,7 @@
     captaion.number = 99;
 
     // how do we take a copy instead?
-    const cap2 = Object.assign({}, person, { number: 99, age: 12});
+    const cap2 = Object.assign({}, person, { number: 99, age: 12}); // not deep clone
     console.log(cap2); 
 
     // We will hopefully soon see the object ...spread
