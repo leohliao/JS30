@@ -35,6 +35,36 @@
   </style>
 
 <script>
+  /* Step 01 - Select the element, select the element inside the element */  
+  const hero = document.querySelector('.hero');
+  const text = hero.querySelector('h1'); 
+  const walk = 100;
+  /* Step 03 - Create function */
+  function shadow(e){
+    /* Step 04 - create variable for hero class height and width */
+    const { offsetWidth: width, offsetHeight: height } = hero;
+    /* Step 05 - create a variale for x and y (for mouse cursor) */
+    let { offsetX: x, offsetY: y } = e;
+    /* Step 06 - Difference between this vs e.target, create an if statement to fix this and etarget */
+    if (this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop; 
+    }
+    /* Step 07 - figure out how far the shadow should go - create a global variable  - use the equation (x/widt * walk - walk/2) for xwalk and ywalk */
+    const xWalk = Math.round((x / width * walk) - (walk / 2));
+    const yWalk = Math.round((y / width * walk) - (walk / 2));
+    /* Step 08 - create textShadow property */
+    text.style.textShadow = `
+    ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+    ${xWalk * -1}px ${yWalk}px 0 rgba(255,130,160,0.7),
+    ${xWalk}px ${yWalk * -1}px 0 rgba(255,130,160,0.7)
+    `;
+  }
+
+  /* Step 02 - Add Eventlistener */
+  hero.addEventListener('mousemove', shadow)
+
+
 </script>
 </body>
 </html>
