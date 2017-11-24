@@ -46,6 +46,20 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+/* Step 02 - use regular expression to get rid of A, the, an..etc words */
+function strip(bandName) {
+  return bandName.replace(/^(a|the|an)/i, '').trim();
+}
+
+/* Step 01 - define a variable which sort bands array */
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+// console.log(sortedBands);
+
+/* Step 03 - select the html element and replace its text */
+document.querySelector('#bands').innerHTML = 
+  sortedBands
+    .map(band => `<li>${band}</li>`)
+    .join('');
 
 </script>
 
