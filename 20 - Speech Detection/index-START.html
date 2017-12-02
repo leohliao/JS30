@@ -12,12 +12,41 @@
 <script>
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   /* Step 01 - create a new instance of speechRecognition */
+  const recognition = new SpeechRecognition();
   /* Step 02 - set interimResults to true insude recognition */
+  recognition.interimResults = true; 
   /* Step 03 - create element('p'), query select a class, appendChild to the element */
+  let p = document.createElement('p');
+  const words = document.querySelector('.words');
+  words.appendChild(p);
   /* Step 04 - AddeventListen to recognition using result, check event */
-  /* Step 05 - start the recognition  */
-  /* Step 06 - run the instance call  */
+  recognition.addEventListener('result', e => {
+    // console.log(e.results);
+    /* Step 05 - grab e.results, turn them into array */
+    const transcript = Array.from(e.results)
+    /* Step 06 - map the result, get the first elements */
+      .map(result => result[0])
+    /* Step 07 - map the result again and replace with result.transcript */
+      .map(result => result.transcript)
+    /* Step 08 - join everything together */
+      .join('');
+    /* Step 10 - overwrite p.textContent with transcript, use a check statement to create element and appendchild */
+    p.textContent = transcript;
+    if (e.results[0].isFinal) {
+      p = document.createElement('p');
+      words.appendChild(p);
+    }
+    if(transcript.includes('weather')){
+      console.log('I am gundam!');
+    }
 
+    // console.log(transcript);
+  });
+  /* Step 09 - add another listen using 'end', passing fucntion recognition */
+  recognition.addEventListener('end', recognition.start);
+  /* Step 05 - start the recognition  */
+  recognition.start();
+  /* Step 06 - run the instance call  */
 </script>
 
 
