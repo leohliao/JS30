@@ -58,6 +58,20 @@
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
   <script>
+    /* Step 01 - select the arrow */
+    const arrow = document.querySelector('.arrow');
+    /* Step 02 - select the speed */
+    const speed = document.querySelector('.speed-value');
+    /* Step 03 - use navigator.geolocation.watchPosition(data) to keep update witht the location, there is something call getPosition */
+    navigator.geolocation.watchPosition((data) => {
+      console.log(data);
+      /* Step 04 - update the textContents of the speed content */
+      speed.textContent = data.coords.speed;
+      /* Step 05 - find ways to rotate the arrow */
+      arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+    });
+    /* Step 06 - create an error call back */
+
   </script>
 </body>
 </html>
