@@ -69,6 +69,9 @@
       speed.textContent = data.coords.speed;
       /* Step 05 - find ways to rotate the arrow */
       arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+    }, (err) => {
+      console.err(err);
+      alert('Hey! You gotta allow the location!')
     });
     /* Step 06 - create an error call back */
 

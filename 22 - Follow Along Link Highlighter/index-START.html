@@ -10,7 +10,7 @@
     <nav>
       <ul class="menu">
         <li><a href="">Home</a></li>
-        <li><a href="">Order Status</a></li>
+        <li><a href="">Order<br/>Status</a></li>
         <li><a href="">Tweets</a></li>
         <li><a href="">Read Our History</a></li>
         <li><a href="">Contact Us</a></li>
@@ -27,6 +27,34 @@
 
   <script>
     // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+    /* Step 01 - select html element and name it triggers */
+    const triggers = document.querySelectorAll('a');
+    /* Step 02 - create html element and name it highlight */
+    const highlight = document.createElement('span');
+    /* Step 03 - add 'highlight' class to highlight variable */
+    highlight.classList.add('highlight');
+    /* Step 04 - append highlight to document body DOM */
+    document.body.append(highlight);
+    /* Step 05 - make a function call it highLightLink */
+    function highlightLink () {
+      const linkCoords = this.getBoundingClientRect();
+      console.log(linkCoords);
+      /* Step 08 - when you scroll down, your highlight coordinate will be off and thus you need to do the calculation again */
+      const coords = {
+        width: linkCoords.width,
+        height: linkCoords.height, 
+        top: linkCoords.top + window.scrollY,
+        left: linkCoords.left + window.scrollX
+      };
+      /* Step 07 - assign width, height and transform of highlight variable with linkCoords */
+      highlight.style.width = `${coords.width}px`;
+      highlight.style.height = `${coords.height}px`
+      highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`
+    } 
+    /* Step 06 - use getBoundingClientRect method to get the the linkCoord */
+    triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
+
+
   </script>
 </body>
 </html>
