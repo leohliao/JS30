@@ -44,6 +44,7 @@
       voices = this.getVoices();
       // console.log(voices);
       voicesDropdown.innerHTML = voices
+        .filter(voice => voice.lang.includes('en'))
         .map(voice => `<option value="${voice.name}"> ${voice.name} (${voice.lang})</option>`)
         .join('');
     }
@@ -66,7 +67,6 @@
       msg[this.name] = this.value;
       toggle();
     }
-  /* Step 10 - addEventlisten to get a toggle */
 
   /* Step 02  - use global variable speech synthes, add eventlistener to it, then call populate voice function */
     speechSynthesis.addEventListener('voiceschanged', populateVoices);
@@ -74,6 +74,9 @@
     voicesDropdown.addEventListener('change', setVoice);
   /* Step 08 - use options for each, add eventlistener and create another function call */
     options.forEach(option => option.addEventListener('change', setOption));
+  /* Step 10 - addEventlisten to get a toggle */
+    speakButton.addEventListener('click', toggle);
+    stopButton.addEventListener('click', ()=> toggle(false));
 </script>
 
 </body>
