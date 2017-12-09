@@ -43,25 +43,37 @@
     function populateVoices() {
       voices = this.getVoices();
       // console.log(voices);
-      gitvoicesDropdown.innerHTML = voices
+      voicesDropdown.innerHTML = voices
         .map(voice => `<option value="${voice.name}"> ${voice.name} (${voice.lang})</option>`)
         .join('');
     }
     /* Step 06 - write the function setVoice */
     function setVoice() {
-      console.log('changing voice');
+      // console.log(this.value);
+      msg.voice = voices.find(voice => voice.name === this.value);
+
     }
     /* Step 07 - create a function toggle speechSynthesis.cancel(), call this in setVoice */
-  
+    function toggle( startOver = true) {
+      speechSynthesis.cancel();
+      if(startOver) {
+        speechSynthesis.speak(msg);
+      }
+    }
   /* Step 09 - create function and make msg[this.name] = this.value */
-  /* Step 08 - use options for each, add eventlistener and create another function call */
-
+    function setOption(){
+      // console.log(this.name, this.value);
+      msg[this.name] = this.value;
+      toggle();
+    }
   /* Step 10 - addEventlisten to get a toggle */
 
   /* Step 02  - use global variable speech synthes, add eventlistener to it, then call populate voice function */
     speechSynthesis.addEventListener('voiceschanged', populateVoices);
   /* Step 05 - create another eventlistenr for voice drop down (sets different voices) */
     voicesDropdown.addEventListener('change', setVoice);
+  /* Step 08 - use options for each, add eventlistener and create another function call */
+    options.forEach(option => option.addEventListener('change', setOption));
 </script>
 
 </body>
