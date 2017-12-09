@@ -35,6 +35,33 @@
   const options = document.querySelectorAll('[type="range"], [name="text"]');
   const speakButton = document.querySelector('#speak');
   const stopButton = document.querySelector('#stop');
+
+  /* Step 01 - select the text using queryselector */
+    msg.text = document.querySelector('[name="text').value;
+  /* Step 03 - create the function populate Voices */
+    /* Step 04 - set voices using this.getVoice function, consolve voice and you will see a bunch of voices  */
+    function populateVoices() {
+      voices = this.getVoices();
+      // console.log(voices);
+      gitvoicesDropdown.innerHTML = voices
+        .map(voice => `<option value="${voice.name}"> ${voice.name} (${voice.lang})</option>`)
+        .join('');
+    }
+    /* Step 06 - write the function setVoice */
+    function setVoice() {
+      console.log('changing voice');
+    }
+    /* Step 07 - create a function toggle speechSynthesis.cancel(), call this in setVoice */
+  
+  /* Step 09 - create function and make msg[this.name] = this.value */
+  /* Step 08 - use options for each, add eventlistener and create another function call */
+
+  /* Step 10 - addEventlisten to get a toggle */
+
+  /* Step 02  - use global variable speech synthes, add eventlistener to it, then call populate voice function */
+    speechSynthesis.addEventListener('voiceschanged', populateVoices);
+  /* Step 05 - create another eventlistenr for voice drop down (sets different voices) */
+    voicesDropdown.addEventListener('change', setVoice);
 </script>
 
 </body>
