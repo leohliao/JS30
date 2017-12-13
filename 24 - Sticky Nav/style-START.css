@@ -12,6 +12,11 @@ body {
   box-sizing: inherit;
 }
 
+/* Step 09 - Add additional effect to site-wrap */
+.fixed-nav .site-wrap {
+  transform: scale(1);
+}
+
 .site-wrap {
   max-width: 700px;
   margin: 70px auto;
@@ -48,6 +53,13 @@ nav {
   z-index: 1;
 }
 
+/* Step 06 - fixed Nav after if statement */
+/* #### Notice the problem with offset #### */
+.fixed-nav nav {
+  position: fixed;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+}
+
 nav ul {
   margin: 0;
   padding:0;
@@ -62,6 +74,12 @@ nav li {
   justify-content: center;
   align-items: center;
 }
+
+/* Step 08 - allow the li.logo class to appear */
+.fixed-nav li.logo {
+  max-width: 500px;
+}
+
 
 li.logo {
   max-width:0;

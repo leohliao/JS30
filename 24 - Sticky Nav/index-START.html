@@ -55,12 +55,25 @@
 
 <script>
 /* Step 01 - Grab nav using querySelector */
+  const nav = document.querySelector('#main')
 /* Step 04 - On pageload, find topOfNav = nav.offsetTop */
+  const topOfNav = nav.offsetTop;
 /* Step 03 - create function fixNav */
-/* Step 05 - compare window.scrollY vs topOfNav, make a if statement, add class fixed-nav */
+  function fixNav() {
+    // console.log(topOfNav, window.scrollY);
+    /* Step 05 - compare window.scrollY vs topOfNav, make a if statement, add class fixed-nav */
+    if (window.scrollY >= topOfNav) {
+      document.body.style.paddingTop = nav.offsetHeight + 'px';
+      document.body.classList.add('fixed-nav');
+    } else {
+      document.body.style.paddingTop = 0;
+      document.body.classList.remove('fixed-nav');
+    }
+  }
 /* Step 06 - add css fixed-nav, notice there is a problem, there you need to add offsetHeight */
 /* Step 07 - more CSS modification */
 /* Step 02 - Use EventLisenter to watch scroll, call fixNav */
+  window.addEventListener('scroll', fixNav);
 </script>
 
 </body>
