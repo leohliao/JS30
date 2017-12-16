@@ -40,8 +40,25 @@
 <button></button>
 <script>
   /* Step 01 - Select all these divs */
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
   /* Step 02 - Create functions */
+  function logText(e) {
+    console.log(this.classList.value); 
+    e.stopPropagation(); // this is method 1 to stop bubbling
+    // console.log(this);
+  }
   /* Step 03 - Add eventlistener using forEach */
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false, // default value is false - method 2 to stop bubbling
+    once: false, // default value is false - method 3 to stop bubbling 
+  })); 
+
+  button.addEventListener('click', () => {
+    console.log("Click!");
+  }, {
+    once: true
+  } )
   /* Bubbling - when you click on multiple nested element, it will trigger parent
               - You can use capture: true / e.stopPropagation() then it will no longer trigger parents 
               - once: true - listen to an event and unbind it - use it for store checkout */
