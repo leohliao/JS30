@@ -132,10 +132,12 @@
     display: none;
   }
 
+ /* Step 08 - Add CSS */
   .trigger-enter .dropdown {
     display: block;
   }
 
+ /* Step 08 - Add CSS */
   .trigger-enter-active .dropdown {
     opacity: 1;
   }
@@ -222,11 +224,42 @@
    /* Step 04 - Select the nav */
    const nav = document.querySelector('.top');
    /* Step 05 - Create two functions */
+   function handleEnter () {
       /* Step 07 - Function ONE: handleEnter, use classList.add('trigger-enter'),
       use setTimeout and add trigger-active class, */
-      /* Step 08 - Go to CSS, add class trigger-enter .dropdown - add property: display: block; opacity: 1; */
-      
+    // console.log("Enter!");
+    // console.log("this");
+    this.classList.add('trigger-enter');
+    setTimeout(() => this.classList.add('trigger-enter-active'), 150);
+      /* Step 08 - Go to CSS, add class trigger-enter .dropdown - add property: display: block; opacity: 1; */   
+    /* Step 10 - add for white background */  
+    background.classList.add('open');
+   };
+
+   function handleLeave () {
+    // console.log("Leave!");
+    /* Step 09 - add remove function   */
+    this.classList.remove('trigger-enter', 'trigger-enter-active');
+    background.classList.add('open');
+
+    const dropdown = this.querySelector('.dropdown');
+    // console.log(dropdown);
+    const dropdownCoords = dropdown.getBoundingClientRect();
+    const navCoords = nav.getBoundingClientRect();
+    // console.log(navCoords);
+
+    const coords = {
+      height: dropdownCoords.height,
+      width: dropdownCoords.width
+    };
+
+    background.style.setProperty('width', `${coords.width}px`);
+    background.style.setProperty('height', `${coords.height}px`);
+   };
+
    /* Step 06 - Add listener for triggers */
+   triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
+   triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
 </script>
 
 </body>
