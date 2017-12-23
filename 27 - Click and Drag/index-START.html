@@ -35,6 +35,29 @@
   </div>
 
 <script>
+  /* Step 01 - grab the sliders using queryselector */
+  /* Step 02 - declare variables: isDown, startX, scrollLeft */
+  /* Step 03 - add listener to slider, tracking mousedown, mouseleave, mouseup, mousemove */
+  /* Step 05 - inside mousedown
+             - isDown is true 
+             - add 'active' on slider 
+             - console.log(e.pageX) // it will tell us where we click
+             - startX = e.pageX - slider.offsetLeft // where the mouse position is
+             - scrollLeft = slider.scrollLeft // where the initial slide is
+             - scrollLeft = slider.scollLeft */
+  /* Step 06 - insde mouseleave 
+             - isDown false
+             - remove 'active' */
+  /* Step 07 - inside mouseup 
+             - isDown false 
+             - remove 'active' */
+  /* Step 04 - inside mousemove listener, 
+             - stop the function from running is not clicking 
+             - pass e, use preventDefault // this will stop selecting text inside it
+             - const x = e.pageX - slider.offsetLeft
+             - const walk = x - startX 
+              - slider.scrollLEft = scrollLeft - walk; 
+             */
 </script>
 
   </body>
