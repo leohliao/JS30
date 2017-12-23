@@ -230,19 +230,24 @@
     // console.log("Enter!");
     // console.log("this");
     this.classList.add('trigger-enter');
-    setTimeout(() => this.classList.add('trigger-enter-active'), 150);
-      /* Step 08 - Go to CSS, add class trigger-enter .dropdown - add property: display: block; opacity: 1; */   
+    // setTimeout(() => this.classList.add('trigger-enter-active'), 150);
+    /* Step 12 - Modified the setTimeout because if we hover too fast then you will see problems  */
+
+    /* setTimeout(() => {
+      if (this.classList.contains('trigger-enter')) {
+        this.classList.add('trigger-enter-active')
+      }
+    }, 150); 
+    */
+
+    setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150)
+    
+    /* Step 08 - Go to CSS, add class trigger-enter .dropdown - add property: display: block; opacity: 1; */   
     /* Step 10 - add for white background */  
     background.classList.add('open');
-   };
 
-   function handleLeave () {
-    // console.log("Leave!");
-    /* Step 09 - add remove function   */
-    this.classList.remove('trigger-enter', 'trigger-enter-active');
-    background.classList.add('open');
-
-    const dropdown = this.querySelector('.dropdown');
+    /* Step 11 - figure out how big the boundry class is */
+    const dropdown = this.querySelector('.dropdown'); // it's listed here because it needs to be dynamic
     // console.log(dropdown);
     const dropdownCoords = dropdown.getBoundingClientRect();
     const navCoords = nav.getBoundingClientRect();
@@ -250,11 +255,23 @@
 
     const coords = {
       height: dropdownCoords.height,
-      width: dropdownCoords.width
+      width: dropdownCoords.width,
+      top: dropdownCoords.top - navCoords.top,
+      left: dropdownCoords.left - navCoords.left
     };
 
     background.style.setProperty('width', `${coords.width}px`);
     background.style.setProperty('height', `${coords.height}px`);
+    background.style.setProperty('top', `${coords.top}px`);
+    background.style.setProperty('left', `${coords.left}px`);
+   };
+
+   function handleLeave () {
+    // console.log("Leave!");
+    /* Step 09 - add remove function   */
+    this.classList.remove('trigger-enter', 'trigger-enter-active');
+    background.classList.remove('open');
+
    };
 
    /* Step 06 - Add listener for triggers */
