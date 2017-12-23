@@ -36,21 +36,42 @@
 
 <script>
   /* Step 01 - grab the sliders using queryselector */
+  const slider = document.querySelector('.items')
   /* Step 02 - declare variables: isDown, startX, scrollLeft */
+  let isDown = false;
+  let startX;
+  let scrollLeft;
   /* Step 03 - add listener to slider, tracking mousedown, mouseleave, mouseup, mousemove */
+  slider.addEventListener('mousedown', (e) => { 
   /* Step 05 - inside mousedown
              - isDown is true 
              - add 'active' on slider 
              - console.log(e.pageX) // it will tell us where we click
-             - startX = e.pageX - slider.offsetLeft // where the mouse position is
+             - startX = e.pageX - slider.offsetLeft 
              - scrollLeft = slider.scrollLeft // where the initial slide is
              - scrollLeft = slider.scollLeft */
+    isDown = true;
+    slider.classList.add('active');
+    // console.log(e.pageX);
+    startX = e.pageX - slider.offsetLeft // where the mouse position is
+    scrollLeft = slider.scrollLeft;
+    
+  });
+  slider.addEventListener('mouseleave', () => {
   /* Step 06 - insde mouseleave 
              - isDown false
              - remove 'active' */
+    isDown = false;         
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mouseup', () => {
   /* Step 07 - inside mouseup 
              - isDown false 
              - remove 'active' */
+    isDown = false;         
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', (e) => {
   /* Step 04 - inside mousemove listener, 
              - stop the function from running is not clicking 
              - pass e, use preventDefault // this will stop selecting text inside it
@@ -58,6 +79,16 @@
              - const walk = x - startX 
               - slider.scrollLEft = scrollLeft - walk; 
              */
+    if(!isDown) return;
+    // console.log(isDown);
+    // console.log(startX);
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    // console.log({x, startX});
+    const walk = x - startX;
+    // console.log(walk);
+    slider.scrollLeft = scrollLeft - walk;
+  });
 </script>
 
   </body>
