@@ -23,6 +23,9 @@
   /* Step 03 - Create function for addEventListener  */
   function handleBar(e) {
     // console.log(e);
+    /* Step 04 - this refers to where speed element is
+               - thus, offsetTop is the distance between the top of the page to your element
+               - pageY is where your mousemove is at */
     const y = e.pageY - this.offsetTop;
     // console.log(y);
     const percent = y / this.offsetHeight;
