@@ -55,8 +55,8 @@
     // console.log(e.pageX);
     startX = e.pageX - slider.offsetLeft // where the mouse position is
     scrollLeft = slider.scrollLeft;
-    
   });
+  
   slider.addEventListener('mouseleave', () => {
   /* Step 06 - insde mouseleave 
              - isDown false
@@ -64,6 +64,7 @@
     isDown = false;         
     slider.classList.remove('active');
   });
+
   slider.addEventListener('mouseup', () => {
   /* Step 07 - inside mouseup 
              - isDown false 
@@ -71,6 +72,7 @@
     isDown = false;         
     slider.classList.remove('active');
   });
+
   slider.addEventListener('mousemove', (e) => {
   /* Step 04 - inside mousemove listener, 
              - stop the function from running is not clicking 
