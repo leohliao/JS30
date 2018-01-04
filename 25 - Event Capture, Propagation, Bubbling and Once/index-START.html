@@ -50,7 +50,7 @@
   }
   /* Step 03 - Add eventlistener using forEach */
   divs.forEach(div => div.addEventListener('click', logText, {
-    capture: false, // default value is false - method 2 to stop bubbling
+    capture: false, // default value is false - method 2 to stop bubbling, but it's going to delegate (run the function from top to down)
     once: false, // default value is false - method 3 to stop bubbling 
   })); 
 
