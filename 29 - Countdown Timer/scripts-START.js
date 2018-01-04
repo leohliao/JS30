@@ -1,8 +1,11 @@
 let countDown;
 const timerDisplay = document.querySelector('.display__time-left');
 const endTime = document.querySelector('.display__end-time');
+const buttons = document.querySelectorAll('[data-time');
+
 /* Step 01 - Create function timer to start */
 function timer(seconds) {
+  clearInterval(countDown);
   /* Why not using setInterval anymore? Because it is not stable, sometimes it stops running */
   /* Step 02 - declare a variable of present time */
   const now = Date.now(); // gives us timestamp
@@ -13,7 +16,7 @@ function timer(seconds) {
   displayEndTime(then);
 
   /* Step 04 - use setInterval to display every seconds = Math.round((then-Date.now())/1000) */
-  setInterval(()=> {
+  countDown = setInterval(()=> {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
   /* Step 05 - check to see if we should stop, otherwise it will display negative */
     if(secondsLeft < 0) {
@@ -43,7 +46,19 @@ function displayEndTime(timestamp){
   const hour = end.getHours();
   const adjustedHour = hour > 12 ? hour - 12 : hour;
   const minutes = end.getMinutes();
-  
   endTime.textContent = `Be Back at ${adjustedHour}:${minutes < 10 ? '0': ''}${minutes}`;
 } // end displayEndTime
+
+function startTimer() {
+  const seconds = parseInt(this.dataset.time);
+  timer(seconds);
+}
   /* Step 11 - in DisplayEngTime, set a time object and get days, time, frm */
+buttons.forEach(button => button.addEventListener('click', startTimer));
+document.customForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const mins = this.minutes.value;
+  // console.log(mins);
+  timer(mins * 60);
+  this.reset();
+});
