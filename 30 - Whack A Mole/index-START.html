@@ -37,7 +37,28 @@
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
   
-  /* Step 01 - create a function that takes random of time range */s
+  /* Step 01 - create a function that takes random of time range and return random amount of time */
+  function randTime(min, max){
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  /* Step 02 - create another function for randomizing holes with parameter of holes  
+             - find random index 
+             - select one hole using that random index 
+             - declare a global variable called lastHole, and make sure we don't get the same hole twice consequtively */
+  
+  /* Step 03 - create a function where the animal will peep
+             - use the above two function to add the two function, use classList.add 
+             - use setTime to remove the class 
+             - declare a global variable timeUp so it prevents this function from running infinity */
+  /* Step 04 - create a function startGame
+             - set socreBoard.textContent = 0 
+             - timeup = false 
+             - run peep 
+             - setTimeout, run the game and have it start after 10 secm by using timeUp variable */
+  /* Step 05 - create function bonk
+             - create addEventListener to detect click and run this function 
+             - declare global variable score
+             - add score */ 
 
 </script>
 </body>
