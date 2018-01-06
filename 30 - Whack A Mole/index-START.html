@@ -36,29 +36,69 @@
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
-  
+  let lastHole;
+  let timeUp = false; 
+  let score;
   /* Step 01 - create a function that takes random of time range and return random amount of time */
-  function randTime(min, max){
+  function randomTime(min, max){
     return Math.round(Math.random() * (max - min) + min);
   }
   /* Step 02 - create another function for randomizing holes with parameter of holes  
              - find random index 
              - select one hole using that random index 
              - declare a global variable called lastHole, and make sure we don't get the same hole twice consequtively */
-  
+  function randomHole(holes) {
+    // console.log(holes.length);
+    const idx = Math.floor(Math.random() * holes.length);
+    const hole = holes[idx];
+    // console.log(hole);
+    if (hole === lastHole) {
+      console.log('you ran again')
+      return randomHole(holes);
+    }
+    lastHole = hole;
+    return hole;
+  }
   /* Step 03 - create a function where the animal will peep
              - use the above two function to add the two function, use classList.add 
              - use setTime to remove the class 
              - declare a global variable timeUp so it prevents this function from running infinity */
+  function peep () {
+    const time = randomTime(200, 1000);
+    const hole = randomHole(holes);
+    // console.log(time, hole);
+    hole.classList.add('up');
+    setTimeout(()=>{
+      hole.classList.remove('up');
+      if (!timeUp) peep();
+    }, time)
+  }
   /* Step 04 - create a function startGame
              - set socreBoard.textContent = 0 
              - timeup = false 
              - run peep 
              - setTimeout, run the game and have it start after 10 secm by using timeUp variable */
+  function startGame(){
+    scoreBoard.textContent = 0; 
+    timeUp = false;
+    score = 0;
+    peep();
+    setTimeout(()=> timeUp = true, 10000);
+  }
   /* Step 05 - create function bonk
              - create addEventListener to detect click and run this function 
              - declare global variable score
              - add score */ 
+  function bonk(e) {
+    // console.log(e); 
+    /* check isTrusted property - if you fake click something then isTrusted is false */
+    if(!e.isTrusted) retun; // cheater
+    score ++;
+    this.classList.remove('up');
+    scoreBoard.textContent = score;
+  }
+
+  moles.forEach(mole=> mole.addEventListener('click', bonk));
 
 </script>
 </body>
