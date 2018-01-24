@@ -1,7 +1,4 @@
 .DS_Store
-node_modules/
 *.log
-haters/
-.idea/
 css-grid-master/node_modules
-mgdb101/instruction
+mgdb101/
