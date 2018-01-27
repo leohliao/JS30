@@ -1,5 +1,5 @@
 # AngularJS
-
+Resource: Lesson[https://alison.com/topic/learn/64838/introduction-to-angularjs]
 
 ## Why AngularJS?
 ### Suitable for Creating Dynamic Website:
@@ -13,7 +13,8 @@
 
 ### Directives 
 - A Directive is marker on a HTML tag that tells AngularJS to run or reference some JavaScript code:
-```index.html
+```html
+/* index.html */
 <!DOCTYPE HTML>
 <html>
   <body ng-controller="storeController">
@@ -21,7 +22,8 @@
 </html>
 ```
 
-```app.js
+```javascript
+  /* app.js */
   function storeController() {
     alert('welcome', 'leo')
   }
