@@ -42,3 +42,7 @@ Resource: Lesson[https://alison.com/topic/learn/64838/introduction-to-angularjs]
 </p>
 ```
 
+### 4. Controllers 
+- Controllers are where we define our app's behavior by defining functions and values.
+
+
