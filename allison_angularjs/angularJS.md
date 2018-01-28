@@ -11,10 +11,10 @@ Resource: Lesson[https://alison.com/topic/learn/64838/introduction-to-angularjs]
 ## What is AngularJS?
 - A client-side JavaScript Framework for adding interactivity to HTML.
 
-### Directives 
+### 1. Directive
 - A Directive is marker on a HTML tag that tells AngularJS to run or reference some JavaScript code:
 ```html
-/* index.html */
+<!-- index.html -->
 <!DOCTYPE HTML>
 <html>
   <body ng-controller="storeController">
@@ -28,3 +28,17 @@ Resource: Lesson[https://alison.com/topic/learn/64838/introduction-to-angularjs]
     alert('welcome', 'leo')
   }
 ```
+### 2. Modules 
+- Where we write pieces of our angularJS application.
+- Makes our code more maintainable, testable, and readable.
+- Where we define dependencies for our app.
+
+### 3. Expressions
+- Allow you to insert dynamic values into your HTML.
+```html
+<p>
+  I am {{4 + 6}} <!-- I am 10 -->
+  {{"hello" + "you"}} <!-- hello you -->
+</p>
+```
+
