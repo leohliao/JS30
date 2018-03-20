@@ -42,7 +42,7 @@ For example:
 `{{ 'octagon gem' | uppercase }}` => OCTAGON GEM
 `<li ng-repeat="product in store.products | limitTo: 3">` => *displaying only 3 products of the array
 `<li ng-repeat="product in store.products | orderBy: '-price'">` => *displaying only 3 products of the array
-`<img ng-src="{{product.images[0].full}}"/>` 
+`<img ng-src="{{product.images[0].full}}"/>`
 
 ### 2. Modules 
 - Where we write pieces of our angularJS application.
