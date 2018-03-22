@@ -8,7 +8,7 @@
 
 Examples: 
 
-```android
+```xml
 <ImageView
     android:text="This is my first Android line of code! Oh WOW, this thing is really cool, now I feel like we are back in business. Don't you think?"
     android:src="@drawable/android"
@@ -23,11 +23,10 @@ Examples:
 ## View Group 
 
 1. LinearLayout
-2. RelativeLayout
     - android:orientation
     - xmlns:android="http://schemas.android.com/apk/res/android" - xml namespace declaration: use this namespace in order to specify that all of these attributes belong to android
 
-```android
+```xml
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
@@ -60,7 +59,7 @@ Examples:
 - match_parent
 - layout_width/layout_height
 
-```android
+```xml
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -90,7 +89,7 @@ Examples:
 
 </LinearLayout>      
 ```
-```android
+```xml
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -99,14 +98,14 @@ Examples:
 
     <ImageView
         android:src="@drawable/ocean"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:scaleType="centerCrop" />
 
     <TextView
         android:text="You're invited!"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:textSize="54sp"
@@ -114,13 +113,67 @@ Examples:
 
     <TextView
         android:text="Bonfire at the beach"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:textSize="34sp"
         android:background="#009688" />
 
 </LinearLayout>
+```
+
+2. Relative Layout
+    - android:layout_alignParentTop="true"/"false"
+    - android:layout_alignParentBottom
+    - android:layout_alignParentLeft
+    - android:layout_alignParentRight
+    - android:layout_centerHorizontal
+    - android:layout_centerVertical 
+    - android:layout_toLeftOf="@id/ben_text_view" // positioning children relative to other views 
+    - android:layout_above="@id/ben_text_view" 
+    - android:id="@+id/ben_text_view" // assigning view id names
+[Layout Params](https://developer.android.com/reference/android/widget/RelativeLayout.LayoutParams.html?utm_source=udacity&utm_medium=course&utm_campaign=android_basics)
+
+```xml
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/image_pebble_beach"
+        android:src="@drawable/ocean" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pebble Beach"
+        android:layout_toRightOf="@id/image_pebble_beach"
+        android:id="@+id/text_pebble_beach"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/image_pebble_beach"
+        android:layout_below="@id/text_pebble_beach"
+        android:id="@+id/text_california"
+        android:text="California"
+        android:textAppearance="?android:textAppearanceSmall" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_toRightOf="@id/image_pebble_beach"
+        android:layout_below="@id/text_california"
+        android:text="10 miles away"
+        android:textAppearance="?android:textAppearanceSmall" />
+
+</RelativeLayout>
 ```
 
 [Udacity Android Visualizer](http://labs.udacity.com/android-visualizer/#/android/text-view)
