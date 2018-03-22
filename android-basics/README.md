@@ -20,5 +20,12 @@ Examples:
     android:layout_height="900dp" />
 ```
 
+## View Group 
+
+1. LinearLayout
+2. RelativeLayout
+    - android:orientation
+
+
 [Udacity Android Visualizer](http://labs.udacity.com/android-visualizer/#/android/text-view)
 [Android Developer Reference for TextView](https://developer.android.com/reference/android/widget/TextView.html)
