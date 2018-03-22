@@ -23,8 +23,8 @@ Examples:
 ## View Group 
 
 1. LinearLayout
-    - android:orientation
-    - xmlns:android="http://schemas.android.com/apk/res/android" - xml namespace declaration: use this namespace in order to specify that all of these attributes belong to android
+    - `android:orientation="vertical"`
+    - `xmlns:android="http://schemas.android.com/apk/res/android"` - xml namespace declaration: use this namespace in order to specify that all of these attributes belong to android
 
 ```xml
 <LinearLayout
@@ -123,23 +123,22 @@ Examples:
 ```
 
 2. Relative Layout
-    - android:layout_alignParentTop="true"/"false"
-    - android:layout_alignParentBottom
-    - android:layout_alignParentLeft
-    - android:layout_alignParentRight
-    - android:layout_centerHorizontal
-    - android:layout_centerVertical 
-    - android:layout_toLeftOf="@id/ben_text_view" // positioning children relative to other views 
-    - android:layout_above="@id/ben_text_view" 
-    - android:id="@+id/ben_text_view" // assigning view id names
+    - `android:layout_alignParentTop="true"/"false"`
+    - `android:layout_alignParentBottom`
+    - `android:layout_alignParentLeft`
+    - `android:layout_alignParentRight`
+    - `android:layout_centerHorizontal`
+    - `android:layout_centerVertical `
+    - `android:layout_toLeftOf="@id/ben_text_view" // positioning children relative to other views `
+    - `android:layout_above="@id/ben_text_view" `
+    - `android:id="@+id/ben_text_view" // assigning view id names`
 [Layout Params](https://developer.android.com/reference/android/widget/RelativeLayout.LayoutParams.html?utm_source=udacity&utm_medium=course&utm_campaign=android_basics)
 
 ```xml
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="56dp"
@@ -175,6 +174,14 @@ Examples:
 
 </RelativeLayout>
 ```
+3. Padding & Margin 
+    - Needed ViewGroup if adding Margin
+    - Margin is handle by parent view group where as padding is handle by children group
+    - `android:padding="8dp"`
+    - `android:paddingLeft="8dp"`
+    - `android:layout_margin="8dp"`
+    - `android:layout_marginRight="8dp"`
+    
 
 [Udacity Android Visualizer](http://labs.udacity.com/android-visualizer/#/android/text-view)
 [Android Developer Reference for TextView](https://developer.android.com/reference/android/widget/TextView.html)
