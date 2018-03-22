@@ -182,6 +182,45 @@ Examples:
     - `android:layout_margin="8dp"`
     - `android:layout_marginRight="8dp"`
     
+```xml
+    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:src="@drawable/ocean"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:text="You're invited!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+  		android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="4dp"
+        android:textColor="@android:color/white"
+        android:textSize="45sp"
+        android:background="#009688"/>
+
+    <TextView
+        android:text="Bonfire at the beach"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="16dp"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:background="#009688"/>
+
+</LinearLayout>
+```
 
 [Udacity Android Visualizer](http://labs.udacity.com/android-visualizer/#/android/text-view)
 [Android Developer Reference for TextView](https://developer.android.com/reference/android/widget/TextView.html)
