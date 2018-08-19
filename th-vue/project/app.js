@@ -5,7 +5,6 @@ const helloWorld = new Vue({
     message: "This is my first Vue template"
   }
 });
-
 // Component System
 const example = new Vue({
   el: '#example', // which html element to attach the instants to
@@ -13,5 +12,18 @@ const example = new Vue({
     title: "Hello", // pass to mustache syntax
     name: "leo",
     message: "This is example"
+  }
+});
+// Directive
+const directive = new Vue({
+  el: '#directive', // which html element to attach the instants to
+  data: {
+    title: "Hello", // pass to mustache syntax
+    name: "leo",
+    message: "This is directive",
+    img: {
+      src: 'https://placeimg.com/200/200/animals',
+      alt: 'A placeholder for animals'
+    }
   }
 });

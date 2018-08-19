@@ -16,6 +16,11 @@
         <h1> {{ title }}, {{ name.toUpperCase() }}</h1>
         <p>  {{ message}}</p>
     </div>
+    <div id="directive">
+        <h1 v-text="title"></h1>
+        <img v-bind:src="img.src" v-bind:alt="img.alt"></img>
+        <img :src="img.src" :alt="img.alt"></img>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="app.js"></script>
 </body>
