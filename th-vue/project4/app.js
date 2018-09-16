@@ -76,6 +76,7 @@ const app = new Vue({
       media.showDetail = !media.showDetail;
     },
     filterList: function () {
+      // console.log(event);
       this.type = event.target.value;
       console.log(this.type);
     }

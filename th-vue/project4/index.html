@@ -19,11 +19,13 @@
         <option v-for="item in uniqueItemsList">{{ item }}</option>
       </select>
       <ul>
-        <li v-for="media in mediaList">
+        <li v-show="type === media.type" 
+            v-for="media in mediaList" 
+            v-on:click="toggleDetails(media)">
           <h3>{{media.title}}</h3>
-          <div>
+          <div v-show='media.showDetail'>
             <p>{{media.description}}</p>
-            <p class="byline">By: {{media.contributor}}</p>
+            <p v-if="media.contributor" class="byline">By: {{media.contributor}}</p>
           </div>
           <img src="./img/arrow.png"></img>
         </li>
