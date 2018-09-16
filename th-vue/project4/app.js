@@ -71,17 +71,21 @@ const app = new Vue({
     type: ''
   },
   methods: {
-    toggleDetails: function () {
-      console.log(media);
+    toggleDetails: function(media) {
+      // console.log(media);
       media.showDetail = !media.showDetail;
     },
     filterList: function () {
       // console.log(event);
       this.type = event.target.value;
-      console.log(this.type);
+      // console.log(this.type);
     }
   },
-  computed: {
+  /* 
+  Computed properties updates when data updates. 
+  This is using cache.
+  */
+  computed: { 
     uniqueItemsList: function () {
       const types = [];
       this.mediaList.forEach((item) => {
