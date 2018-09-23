@@ -23,10 +23,11 @@ const cards = [
   ]; 
 
 
-  // Get information for new cards from the user
-    // Create properties to store front and back of new card
-    // Bind those properties to the form input using v-model
+
   // Add new cards when user hit enter or click button
+    // Create a new method
+      // Creates a new card object containing new card information
+      // pushes that card object in the cards array
   // Delete cards
   // Animate Card Flip
   // Display an error message if form field are blank
@@ -35,6 +36,9 @@ const cards = [
     el: '#flashcard-app',
     data: {
       cards: cards,
+        // Get information for new cards from the user
+        // Create properties to store front and back of new card
+        // Bind those properties to the form input using v-model
       newFront: "",
       newBack: ""
     }, 
@@ -43,6 +47,14 @@ const cards = [
     methods: {
       toggleCard: function(card) {
         card.flipped = !card.flipped;
+      },
+      addNew: function() {
+        this.cards.push({
+          front: this.newFront,
+          back: this.newBack,
+          flipped: false
+        });
       }
+
     }
   });
