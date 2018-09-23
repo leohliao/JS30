@@ -21,17 +21,23 @@
         <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
       </label>
       <button v-on:click="addNew">Add a New Card</button>
-      <span class="error">Oops! Flashcards need a front and a back.</span>
+      <span v-show="error" class="error">Oops! Flashcards need a front and a back.</span>
     </div>
 
     <ul class="flashcard-list">
-      <li v-on:click="toggleCard(card)" v-for="card in cards">
-        <p v-if="!card.flipped" class="card"> {{card.front}}
-            <span class="delete-card">X</span>
-        </p>
-        <p v-else class="card"> {{card.back}}
-            <span class="delete-card">X</span>
-        </p>
+      <li v-on:click="toggleCard(card)" v-for="(card, idx) in cards">
+        <transition name="flip">
+          <p v-bind:key="card.flipped" class="card"> 
+            {{ card.flipped ? card.back : card.front }}
+              <span v-on:click="deleteCard(idx)" class="delete-card">X</span>
+          </p>
+          <!-- <p v-if="!card.flipped" key="front" class="card"> {{card.front}}
+              <span v-on:click="deleteCard(idx)" class="delete-card">X</span>
+          </p>
+          <p v-else class="card" key="back"> {{card.back}}
+              <span v-on:click="deleteCard(idx)" class="delete-card">X</span>
+          </p> -->
+        </transition> 
       </li>
     </ul>
   </div>

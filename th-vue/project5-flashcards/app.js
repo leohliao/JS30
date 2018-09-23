@@ -40,7 +40,9 @@ const cards = [
         // Create properties to store front and back of new card
         // Bind those properties to the form input using v-model
       newFront: "",
-      newBack: ""
+      newBack: "",
+      error: false
+
     }, 
     // Display our data
     // Onclick: flip cards back and forth
@@ -49,11 +51,22 @@ const cards = [
         card.flipped = !card.flipped;
       },
       addNew: function() {
-        this.cards.push({
-          front: this.newFront,
-          back: this.newBack,
-          flipped: false
-        });
+        if (!this.newFront || !this.newBack) {
+          this.error = true;
+        } else {
+          this.cards.push({
+            front: this.newFront,
+            back: this.newBack,
+            flipped: false
+          });
+          this.newFront = "";
+          this.newBack = "";
+          this.error = false;
+        }
+
+      },
+      deleteCard: function(idx) {
+        this.cards.splice(idx, 1);
       }
 
     }
