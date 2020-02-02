@@ -1,6 +1,7 @@
 .DS_Store
 *.log
-css-grid-master/node_modules
 mgdb-101/instruction
 angularjs/01-practice/assets
 th-vue/DOWNLOADS
+/node_modules
+/learn-node/projectNode/variables.env
